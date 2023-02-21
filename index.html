@@ -1,1 +1,1879 @@
+<meta charset="UTF-8">
+<title>Win Rate calculator</title>
 
+<center>
+	
+<strong><big><h3> Win rate necessarios dos meus lindos herois </h3></big></strong>
+
+</center>
+
+
+<button>Consulte aqui seu WR</button>
+
+
+<html>
+    <script type="text/javascript">
+	// para colocar os numeros em ordem:
+
+ //var numeross = [2,6,45,3,9]
+		//var numerossDesc = numeross.sort(function(b, a) {
+			//return b - a;
+		//})
+		//mostra (numerossDesc)
+
+	var botao = document.querySelector("button");
+
+	
+		function Interação_usuario() {
+
+			var nome = prompt ("iae, bonitão! Qual seu nome?");
+			var heroi = prompt (nome + ", qual herói você quer ver?");
+			var Y = prompt ("Mano, qual Win Rate você quer nesse personagem? (%)") / 100;
+			var partidasAmiguinho = prompt (nome + ", me fala ai, quantas pt's você tem com " + heroi + "?");
+			var winRateAmiguinho = prompt (nome + ", e seu Win Rate atual de " + heroi + "? (%)");
+			var vitoriaAmiguinho = calculaVic (partidasAmiguinho, winRateAmiguinho);
+			var faltamAmiguinho = faltando (partidasAmiguinho, vitoriaAmiguinho);
+			var Yx = (Y * 100)
+			function faltando (partida, vitoria) {
+
+				var faltam = (((partida * Y) - vitoria) / (1 - Y));
+				return faltam;
+
+		}
+
+			if (faltamAmiguinho <= 15 && faltamAmiguinho > 5) {
+
+				alert ("faltam " + Math.round (faltamAmiguinho) + " vitórias consecutivas para você chegar aos " + Yx + "% de Win Rate com " + heroi + ", " + nome + ". Ta pertin, vai lá!");
+
+			}
+
+
+			if (faltamAmiguinho <= 5) {
+
+				alert ("faltam apenas " + Math.round (faltamAmiguinho) + " vitórias consecutivas para você chegar aos " + Yx + "% de Win Rate com " + heroi + ", " + nome + ". Ta pertin, vai lá!");
+
+			}
+
+
+	 		// Forma alternativa e mais fácil:
+			if (faltamAmiguinho > 15 && faltamAmiguinho <= 50) {
+			
+				alert ("Bom, você tem uma caminhada de " + Math.round (faltamAmiguinho) + " vitórias consecutivas pra chegar aos " + Yx + "% de Win Rate com " + heroi + ". Não ta tão longe.. cê chega lá, "  + nome + ". Boa sorte, meu nobre!!");
+	
+			}
+
+
+			if (faltamAmiguinho > 50) {
+
+				if (faltamAmiguinho <= 100) {
+
+					alert ("Meu amigo... vai precisar se esforçar um pouquinho porque você necessita de " + Math.round (faltamAmiguinho) + " vitórias consecutivas para você chegar aos " + Yx + "% de Win Rate com " + heroi + ". Mas não desiste, cê chega lá, " + nome);
+
+
+			    }
+			}
+
+
+			if (faltamAmiguinho > 100 && faltamAmiguinho <= 300) {
+
+				alert ( nome +", você talvez não consiga nessa season, mas ja vai tentando agora, pois faltam " + Math.round (faltamAmiguinho) + " vitórias consecutivas para você chegar aos " + Yx + "% de Win Rate com " + heroi + ". Mas desiste não, cê chega lá! não tão rápido, mas chega.." );
+
+			}
+
+
+			if (faltamAmiguinho > 300) {
+
+				if (faltamAmiguinho <= 1000) {
+
+					alert (nome + ", Você" + Math.round (faltamAmiguinho) + " vitórias consecutivas pra" + Yx + "% de Win Rate com " + heroi + ". Só falo uma coisa: vira Mono" + heroi + ".");
+
+
+			}
+
+
+			}
+
+			if (faltamAmiguinho > 1000) {
+
+				alert (nome + Math.round (faltamAmiguinho) + " vitórias consecutivas pra" + Yx + "% de Win Rate com " + heroi + ".. desiste." );
+
+
+			}
+
+		}
+
+
+		botao.onclick = Interação_usuario;
+		
+		// Win Rate de 60:
+	    // ! equação direta APENAS para 60:
+		// --> (essa aqui --> ) var faltam = (1.5 * partida - 2.5 * vitoria);
+		// essa equação debaixo é pra qualquer win rate que pedirem no balão inicial com o usuário:
+		
+
+	function pulaLinha() {
+
+			document.write ("<br>")
+
+		}
+		
+
+	function mostra (frase) {
+			
+			document.write(frase);
+			pulaLinha();
+
+		}
+
+
+	function calculaVic (partidas, winRate) {
+		
+
+		var vitorias = (partidas * winRate/100);
+		return vitorias;
+
+	}
+
+	function faltando_50 (partidas, vitoria) {
+
+		var WinRate50 = (0.5 * partidas - vitoria) / 0.5;
+			return WinRate50;
+		
+	}
+
+	function faltando_60 (partida, vitoria) {
+
+		var WinRate60 = (1.5 * partida - 2.5 * vitoria);
+			return WinRate60;
+		
+	}
+
+
+	function faltando_70 (partidas, vitoria) {
+
+		var WinRate70 = (0.7 * partidas - vitoria) / 0.3;
+			return WinRate70;
+
+	}
+
+
+	function faltando_80 (partidas, vitoria) {
+
+		var WinRate80 = (0.8 * partidas - vitoria) / 0.2;
+		return WinRate80;
+
+	}
+
+
+	function faltando_90 (partidas, vitoria) {
+
+		var WinRate90 = (0.9 * partidas - vitoria) / 0.1;
+		return WinRate90;
+
+	}
+
+	function faltando_100(partidas, vitorias) {
+
+		var WinRate100 = (partidas - vitorias) / 0.01;
+		return WinRate100;
+	
+	}
+	
+	
+	
+
+	
+
+
+
+
+
+			
+	
+
+
+
+
+
+
+//_________________________________________________________________________________________________________________________________________________________________
+// um exemplo de se fazer os calculos do 'calculaVic':
+
+
+	
+
+	//var vitoriasWanwan = calculaVic (partidasWanwan, winRateWanwan);
+		//mostra (vitoriasWanwan)
+		//pulaLinha()
+
+		//var vicgusion = calculaVic (partidasGusion, winRateGusion)
+		//mostra (vicgusion)
+//_________________________________________________________________________________________________________________________________________________________________
+
+
+
+			// winrate = vitorias / partidas
+			// vitorias = partidas * (winrate/100)
+
+
+
+	// numeros de partidas:
+	var partidasWanwan = 1453;
+	var partidasLing = 672;
+	var partidasGuinevere = 333;
+	var partidasKagura = 297;
+	var partidasGusion = 325;
+	var partidasBelerick = 260;
+	var partidasHarith  = 251;
+	var partidasXborg = 207;
+	var partidasPaquito = 179;
+	var partidasClint = 95;
+	var partidasPopol = 116;
+	var partidasSelena = 167;
+	var partidasBeatrix = 129;
+	var partidasGranger = 62;
+	var partidasClaude = 42;
+	var partidasBrody = 88;
+	var	partidasRuby = 104;
+	var	partidasValir = 120;
+	
+
+	// win rate dos cara:
+	var winRateWanwan = 60.1;
+	var winRateLing = 63.4;
+	var winRateGuinevere = 55.9
+	var winRateKagura = 48.8;
+	var winRateGusion = 62.5;
+	var winRateBelerick = 59.6;
+	var winRateHarith = 53;
+	var winRateXborg = 53.1;
+	var winRatePaquito = 51.4;
+	var winRateClint = 63.2;
+	var winRatePopol = 65.5;
+	var winRateSelena = 46.7;
+	var winRateBeatrix = 60.5;
+	var winRateGranger = 45.2;
+	var winRateClaude = 42.9;
+	var winRateBrody = 45.5;
+	var	winRateRuby = 52.9;
+	var	winRateValir = 56.7;
+	
+    
+    var numerosPartidas = [partidasWanwan,
+		 partidasLing, 
+		 partidasKagura, 
+		 partidasGuinevere, 
+		 partidasBelerick,
+		 partidasGusion,
+		 partidasHarith,
+		 partidasXborg,
+		 partidasPaquito,
+		 partidasClint,
+		 partidasPopol,
+		 partidasSelena,
+		 partidasBeatrix,
+		 partidasGranger,
+		 partidasClaude,
+		 partidasBrody,
+		 partidasRuby,
+		 partidasValir]
+
+
+		 var numerosWinRate = [winRateWanwan,
+		 winRateLing, 
+		 winRateKagura, 
+		 winRateGuinevere, 
+		 winRateBelerick,
+		 winRateGusion,
+		 winRateHarith,
+		 winRateXborg,
+		 winRatePaquito,
+		 winRateClint,
+		 winRatePopol,
+		 winRateSelena,
+		 winRateBeatrix,
+		 winRateGranger,
+		 winRateClaude,
+		 winRateBrody,
+		 winRateRuby,
+		 winRateValir]
+
+		 
+
+	//	 var numeros = [Wanwan,
+	//	 Ling, 
+	//	 Kagura, 
+	//	 Guinevere, 
+	//	 Belerick,
+	//	 Gusion,
+	//	 Harith,
+	//	 Xborg,
+	//	 Paquito,
+	//	 Clint,
+	//	 Popol,
+	//	 Selena,
+	//	 Beatrix,
+	//	 Granger,
+	//	 Claude,
+	//	 Brody,
+	//	 Ruby,
+	//	 Valir]
+
+	//	 var Fnumeros = [FWanwan,
+	//	 Fling, 
+	//	 Fkagura, 
+	//	 Fguinevere, 
+	//	 Fbelerick,
+	//	 Fgusion,
+	//	 Fharith,
+	//	 Fxborg,
+	//	 Fpaquito,
+	//	 Fclint,
+	//	 Fpopol,
+	//	 Fselena,
+	//	 Fbeatrix,
+	//	 Fgranger,
+	//	 Fclaude,
+	//	 Fbrody,
+	//	 Fruby,
+	//	 Fvalir]
+
+
+
+
+
+	// vitorias dos cara:
+	var vitoriasWanwan = partidasWanwan * (winRateWanwan/100);
+	var vitoriasLing = partidasLing * (winRateLing/100);
+	var vitoriasGuinevere = partidasGuinevere* (winRateGuinevere/100);
+	var vitoriasKagura = partidasKagura * (winRateKagura/100);
+	var vitoriasGusion = (partidasGusion * winRateGusion) /100;
+	var vitoriasBelerick = partidasBelerick * (winRateBelerick/100);
+	var vitoriasHarith = partidasHarith * (winRateHarith/100);
+	var vitoriasXborg = partidasXborg * (winRateXborg/100);
+	var vitoriasPaquito = partidasPaquito * (winRatePaquito/100);
+	var vitoriasClint = calculaVic (partidasClint, winRateClint);
+	var vitoriasPopol = calculaVic (partidasPopol, winRatePopol);
+	var vitoriasSelena = calculaVic (partidasSelena, winRateSelena);
+	var vitoriasBeatrix = calculaVic (partidasBeatrix, winRateBeatrix);
+	var vitoriasGranger = calculaVic (partidasGranger, winRateGranger);
+	var vitoriasClaude = calculaVic (partidasClaude, winRateClaude);
+	var vitoriasBrody = calculaVic (partidasBrody, winRateBrody);
+	var vitoriasRuby = calculaVic (partidasRuby, winRateRuby);
+	var vitoriasValir = calculaVic (partidasValir, winRateValir);
+
+	// derrota dos cara:
+	var derrotasWanwan = partidasWanwan - vitoriasWanwan;
+	var derrotasLing = partidasLing - vitoriasLing;
+	var derrotasGuinevere = partidasGuinevere - vitoriasGuinevere;
+	var derrotasKagura = partidasKagura - vitoriasKagura;
+	var derrotasGusion = partidasGusion - vitoriasGusion;
+	var derrotasBelerick = partidasBelerick - vitoriasBelerick;
+	var derrotasHarith = partidasHarith - vitoriasHarith;
+	var derrotasXborg = partidasXborg - vitoriasXborg;
+	var derrotasPaquito = partidasPaquito - vitoriasPaquito;
+	var derrotasClint = partidasClint - vitoriasClint;
+	var derrotasPopol = partidasPopol - vitoriasPopol
+	var derrotasSelena = partidasSelena - vitoriasSelena
+	var derrotasBeatrix = partidasBeatrix - vitoriasBeatrix
+	var derrotasGranger = partidasGranger - vitoriasGranger
+	var derrotasClaude = partidasClaude - vitoriasClaude
+	var derrotasBrody = partidasBrody - vitoriasBrody
+	var derrotasRuby = partidasRuby - vitoriasRuby
+	var derrotasValir = partidasValir - vitoriasValir
+
+	// bglh pra fazer o calculo de quantos faltam pra 50%:
+
+	var FWanWan50 = faltando_50 (partidasWanwan, vitoriasWanwan);
+	var Fgusion50 = faltando_50 (partidasGusion, vitoriasGusion);
+	var Fharith50 = faltando_50 (partidasHarith, vitoriasHarith);
+	var Fguine50 = faltando_50 (partidasGuinevere, vitoriasGuinevere);
+	var Fling50 = faltando_50 (partidasLing, vitoriasLing);
+	var Fxborg50 = faltando_50 (partidasXborg, vitoriasXborg);
+	var Fkagura50 = faltando_50 (partidasKagura, vitoriasKagura);
+	var Fbelerick50 = faltando_50 (partidasBelerick, vitoriasBelerick);
+	var Fpaquito50 = faltando_50 (partidasPaquito, vitoriasPaquito);
+	var Fclint50 = faltando_50 (partidasClint, vitoriasClint);
+	var Fpopol50 = faltando_50 (partidasPopol, vitoriasPopol); 
+	var Fselena50 = faltando_50 (partidasSelena, vitoriasSelena); 
+	var Fbeatrix50 = faltando_50 (partidasBeatrix, vitoriasBeatrix); 
+	var Fgranger50 = faltando_50 (partidasGranger, vitoriasGranger); 
+	var Fclaude50 = faltando_50 (partidasClaude, vitoriasClaude); 
+	var Fbrody50 = faltando_50 (partidasBrody, vitoriasBrody); 
+	var Fruby50 = faltando_50 (partidasRuby, vitoriasRuby); 
+	var Fvalir50 = faltando_50 (partidasValir, vitoriasValir); 
+
+
+
+	// bglh pra fazer o calculo de quantos faltam pra 60%:
+	var FWanWan60 = faltando_60 (partidasWanwan, vitoriasWanwan);
+	var Fgusion60 = faltando_60 (partidasGusion, vitoriasGusion);
+	var Fharith60 = faltando_60 (partidasHarith, vitoriasHarith);
+	var Fguine60 = faltando_60 (partidasGuinevere, vitoriasGuinevere);
+	var Fling60 = faltando_60 (partidasLing, vitoriasLing);
+	var Fxborg60 = faltando_60 (partidasXborg, vitoriasXborg);
+	var Fkagura60 = faltando_60 (partidasKagura, vitoriasKagura);
+	var Fbelerick60 = faltando_60 (partidasBelerick, vitoriasBelerick);
+	var Fpaquito60 = faltando_60 (partidasPaquito, vitoriasPaquito);
+	var Fclint60 = faltando_60 (partidasClint, vitoriasClint);
+	var Fpopol60 = faltando_60 (partidasPopol, vitoriasPopol); 
+	var Fselena60 = faltando_60 (partidasSelena, vitoriasSelena); 
+	var Fbeatrix60 = faltando_60 (partidasBeatrix, vitoriasBeatrix); 
+	var Fgranger60 = faltando_60 (partidasGranger, vitoriasGranger); 
+	var Fclaude60 = faltando_60 (partidasClaude, vitoriasClaude); 
+	var Fbrody60 = faltando_60 (partidasBrody, vitoriasBrody); 
+	var Fruby60 = faltando_60 (partidasRuby, vitoriasRuby); 
+	var Fvalir60 = faltando_60 (partidasValir, vitoriasValir); 
+
+	var numerosWinRate60 = [FWanWan60,
+		 Fling60, 
+		 Fkagura60, 
+		 Fguine60, 
+		 Fbelerick60,
+		 Fgusion60,
+		 Fharith60,
+		 Fxborg60,
+		 Fpaquito60,
+		 Fclint60,
+		 Fpopol60,
+		 Fselena60,
+		 Fbeatrix60,
+		 Fgranger60,
+		 Fclaude60,
+		 Fbrody60,
+		 Fruby60,
+		 Fvalir60]
+
+
+	// bglh pra fazer o calculo de quantos faltam pra 70%:
+	var FWanWan70 = faltando_70 (partidasWanwan, vitoriasWanwan);
+	var Fgusion70 = faltando_70 (partidasGusion, vitoriasGusion);
+	var Fharith70 = faltando_70 (partidasHarith, vitoriasHarith);
+	var Fguine70 = faltando_70 (partidasGuinevere, vitoriasGuinevere);
+	var Fling70 = faltando_70 (partidasLing, vitoriasLing);
+	var Fxborg70 = faltando_70 (partidasXborg, vitoriasXborg);
+	var Fkagura70 = faltando_70 (partidasKagura, vitoriasKagura);
+	var Fbelerick70 = faltando_70 (partidasBelerick, vitoriasBelerick);
+	var Fpaquito70 = faltando_70 (partidasPaquito, vitoriasPaquito);
+	var Fclint70 = faltando_70 (partidasClint, vitoriasClint); 
+	var Fpopol70 = faltando_70 (partidasPopol, vitoriasPopol); 
+	var Fselena70 = faltando_70 (partidasSelena, vitoriasSelena); 
+	var Fbeatrix70 = faltando_70 (partidasBeatrix, vitoriasBeatrix); 
+	var Fgranger70 = faltando_70 (partidasGranger, vitoriasGranger); 
+	var Fclaude70 = faltando_70 (partidasClaude, vitoriasClaude); 
+	var Fbrody70 = faltando_70 (partidasBrody, vitoriasBrody); 
+	var Fruby70 = faltando_70 (partidasRuby, vitoriasRuby); 
+	var Fvalir70 = faltando_70 (partidasValir, vitoriasValir); 
+
+	var numerosWinRate70 = [FWanWan70,
+		 Fling70, 
+		 Fkagura70, 
+		 Fguine70, 
+		 Fbelerick70,
+		 Fgusion70,
+		 Fharith70,
+		 Fxborg70,
+		 Fpaquito70,
+		 Fclint70,
+		 Fpopol70,
+		 Fselena70,
+		 Fbeatrix70,
+		 Fgranger70,
+		 Fclaude70,
+		 Fbrody70,
+		 Fruby70,
+		 Fvalir70]
+
+
+	// bglh pra fazer o calculo de quantos faltam pra 80%:
+	var FWanWan80 = faltando_80 (partidasWanwan, vitoriasWanwan);
+	var Fgusion80 = faltando_80 (partidasGusion, vitoriasGusion);
+	var Fharith80 = faltando_80 (partidasHarith, vitoriasHarith);
+	var Fguine80 = faltando_80 (partidasGuinevere, vitoriasGuinevere);
+	var Fling80 = faltando_80 (partidasLing, vitoriasLing);
+	var Fxborg80 = faltando_80 (partidasXborg, vitoriasXborg);
+	var Fkagura80 = faltando_80 (partidasKagura, vitoriasKagura);
+	var Fbelerick80 = faltando_80 (partidasBelerick, vitoriasBelerick);
+	var Fpaquito80 = faltando_80 (partidasPaquito, vitoriasPaquito);
+	var Fclint80 = faltando_80 (partidasClint, vitoriasClint); 
+	var Fpopol80 = faltando_80 (partidasPopol, vitoriasPopol); 
+	var Fselena80 = faltando_80 (partidasSelena, vitoriasSelena); 
+	var Fbeatrix80 = faltando_80 (partidasBeatrix, vitoriasBeatrix); 
+	var Fgranger80 = faltando_80 (partidasGranger, vitoriasGranger); 
+	var Fclaude80 = faltando_80 (partidasClaude, vitoriasClaude); 
+	var Fbrody80 = faltando_80 (partidasBrody, vitoriasBrody); 
+	var Fruby80 = faltando_80 (partidasRuby, vitoriasRuby); 
+	var Fvalir80 = faltando_80 (partidasValir, vitoriasValir); 
+
+	var numerosWinRate80 = [FWanWan80,
+		 Fling80, 
+		 Fkagura80, 
+		 Fguine80, 
+		 Fbelerick80,
+		 Fgusion80,
+		 Fharith80,
+		 Fxborg80,
+		 Fpaquito80,
+		 Fclint80,
+		 Fpopol80,
+		 Fselena80,
+		 Fbeatrix80,
+		 Fgranger80,
+		 Fclaude80,
+		 Fbrody80,
+		 Fruby80,
+		 Fvalir80]
+
+
+	// bglh pra fazer o calculo de quantos faltam pra 90%:
+	var FWanWan90 = faltando_90 (partidasWanwan, vitoriasWanwan);
+	var Fgusion90 = faltando_90 (partidasGusion, vitoriasGusion);
+	var Fharith90 = faltando_90 (partidasHarith, vitoriasHarith);
+	var Fguine90 = faltando_90 (partidasGuinevere, vitoriasGuinevere);
+	var Fling90 = faltando_90 (partidasLing, vitoriasLing);
+	var Fxborg90 = faltando_90 (partidasXborg, vitoriasXborg);
+	var Fkagura90 = faltando_90 (partidasKagura, vitoriasKagura);
+	var Fbelerick90 = faltando_90 (partidasBelerick, vitoriasBelerick);
+	var Fpaquito90 = faltando_90 (partidasPaquito, vitoriasPaquito);
+	var Fclint90 = faltando_90 (partidasClint, vitoriasClint); 
+	var Fpopol90 = faltando_90 (partidasPopol, vitoriasPopol); 
+	var Fselena90 = faltando_90 (partidasSelena, vitoriasSelena); 
+	var Fbeatrix90 = faltando_90 (partidasBeatrix, vitoriasBeatrix); 
+	var Fgranger90 = faltando_90 (partidasGranger, vitoriasGranger); 
+	var Fclaude90 = faltando_90 (partidasClaude, vitoriasClaude); 
+	var Fbrody90= faltando_90 (partidasBrody, vitoriasBrody); 
+	var Fruby90 = faltando_90 (partidasRuby, vitoriasRuby); 
+	var Fvalir90= faltando_90 (partidasValir, vitoriasValir); 
+
+	var numerosWinRate90 = [FWanWan90,
+		 Fling90, 
+		 Fkagura90, 
+		 Fguine90, 
+		 Fbelerick90,
+		 Fgusion90,
+		 Fharith90,
+		 Fxborg90,
+		 Fpaquito90,
+		 Fclint90,
+		 Fpopol90,
+		 Fselena90,
+		 Fbeatrix90,
+		 Fgranger90,
+		 Fclaude90,
+		 Fbrody90,
+		 Fruby90,
+		 Fvalir90]
+
+
+	// bglh pra fazer o calculo de quantos faltam pra 100%:
+	var FWanWan100 = faltando_100 (partidasWanwan, vitoriasWanwan);
+	var Fgusion100 = faltando_100 (partidasGusion, vitoriasGusion);
+	var Fharith100 = faltando_100 (partidasHarith, vitoriasHarith);
+	var Fguine100 = faltando_100 (partidasGuinevere, vitoriasGuinevere);
+	var Fling100 = faltando_100 (partidasLing, vitoriasLing);
+	var Fxborg100 = faltando_100 (partidasXborg, vitoriasXborg);
+	var Fkagura100 = faltando_100 (partidasKagura, vitoriasKagura);
+	var Fbelerick100 = faltando_100 (partidasBelerick, vitoriasBelerick);
+	var Fpaquito100 = faltando_100 (partidasPaquito, vitoriasPaquito);
+	var Fclint100 = faltando_100 (partidasClint, vitoriasClint); 
+	var Fpopol100 = faltando_100 (partidasPopol, vitoriasPopol); 
+	var Fselena100 = faltando_100 (partidasSelena, vitoriasSelena); 
+	var Fbeatrix100 = faltando_100 (partidasBeatrix, vitoriasBeatrix); 
+	var Fgranger100 = faltando_100 (partidasGranger, vitoriasGranger); 
+	var Fclaude100 = faltando_100 (partidasClaude, vitoriasClaude); 
+	var Fbrody100 = faltando_100 (partidasBrody, vitoriasBrody); 
+	var Fruby100 = faltando_100 (partidasRuby, vitoriasRuby); 
+	var Fvalir100 = faltando_100 (partidasValir, vitoriasValir); 
+
+	var numerosWinRate100 = [FWanWan100,
+		 Fling100, 
+		 Fkagura100, 
+		 Fguine100, 
+		 Fbelerick100,
+		 Fgusion100,
+		 Fharith100,
+		 Fxborg100,
+		 Fpaquito100,
+		 Fclint100,
+		 Fpopol100,
+		 Fselena100,
+		 Fbeatrix100,
+		 Fgranger100,
+		 Fclaude100,
+		 Fbrody100,
+		 Fruby100,
+		 Fvalir100]
+
+
+	
+//_________________________________________________________________________________________________________________________________________________________________
+
+ 																// O que é mostrado na tela:
+
+
+
+
+   		mostra (" <h3> Número de partidas: </h3>");
+
+
+    //mostra ("Wanwan: <big>" + partidasWanwan + "</big> Partidas");
+	//mostra ("Ling: <big>" + partidasLing + "</big> Partidas");
+
+		
+
+			var numerossDesc = numerosPartidas.sort(function (a,b) {
+				return b - a;
+			
+			})
+
+			//for (var tamP = 0; tamP < numerossDesc.length; tamP++ ) {
+
+			//	document.write ("você alcançou " + )
+				
+			//}
+
+			for ( i = 0; i < numerossDesc.length; i++ ) {
+
+				if (numerossDesc[i] == partidasWanwan) {
+					mostra ("Wanwan: " + numerossDesc[i] + " Partidas")
+				}
+				if (numerossDesc[i] == partidasGusion) {
+					mostra ("Gusion: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasGuinevere) {
+					mostra ("Guinevere: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasLing) {
+					mostra ("Ling: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasRuby) {
+					mostra ("Ruby: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasClaude) {
+					mostra ("Claude: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasBrody) {
+					mostra ("Brody: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasValir) {
+					mostra ("Valir: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasBelerick) {
+					mostra ("Belerick: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasHarith) {
+					mostra ("Harith: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasXborg) {
+					mostra ("Xborg: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasSelena) {
+					mostra ("Selena: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasKagura) {
+					mostra ("Kagura: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasPaquito) {
+					mostra ("Paquito " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasClint) {
+					mostra ("Clint: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasPopol) {
+					mostra ("Popol: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasBeatrix) {
+					mostra ("Beatrix: " + numerossDesc[i] + " Partidas")
+				}					
+				if (numerossDesc[i] == partidasGranger) {
+					mostra ("Granger: " + numerossDesc[i] + " Partidas")
+				}								
+
+				}
+			
+
+
+
+	//mostra ("Kagura: <big>" + partidasKagura + "</big> Partidas");
+	//mostra ("Guinevere: <big>" + partidasGuinevere + "</big> Partidas");
+	//mostra ("Belerick: <big>" + partidasBelerick + "</big> Partidas"),
+	//mostra ("Gusion: <big>" + partidasGusion + "</big> Partidas"),
+	//mostra ("Harith: <big>" + partidasHarith + "</big> Partidas"),
+	//mostra ("Xborg: <big>" + partidasXborg + "</big> Partidas"),
+	//mostra ("Paquito: <big>" + partidasPaquito + "</big> Partidas"),
+	//mostra ("Clint: <big>" + partidasClint + "</big> Partidas"),
+	//mostra ("Popol: <big>" + partidasPopol + "</big> Partidas"),
+	//mostra ("Selena: <big>" + partidasSelena + "</big> Partidas"),
+	//mostra ("Beatrix: <big>" + partidasBeatrix + "</big> Partidas"),
+	//mostra ("Granger: <big>" + partidasGranger + "</big> Partidas"),
+	//mostra ("Claude: <big>" + partidasClaude + "</big> Partidas"),
+	//mostra ("Brody: <big>" + partidasBrody + "</big> Partidas"),
+	//mostra ("Ruby: <big>" + partidasRuby + "</big> Partidas"),
+	//mostra ("Valir: <big>" + partidasValir + "</big> Partidas"),
+	
+	
+
+
+
+	
+pulaLinha();
+
+		mostra ("<h3> win rate: </h3>");
+
+		//mostra (": " + winRate + "%");
+
+		var WR = numerosWinRate.sort(function (a,b) {
+				return b - a;
+			})
+
+
+			for ( wrt = 0; wrt < numerosWinRate.length; wrt++ ) {
+
+				if (numerosWinRate[wrt] == winRateWanwan) {
+					mostra ("Wanwan: <big>" + numerosWinRate[wrt] + "</big>%");
+				}
+				if (numerosWinRate[wrt] == winRateGusion) {
+					mostra ("Gusion: <big>" + winRateGusion + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateGuinevere) {
+					mostra ("Guinevere: <big>" + winRateGuinevere + "</big>%")
+				}					
+				if (numerosWinRate[wrt] == winRateLing) {
+					mostra ("Ling: <big>" + winRateLing + "</big>%")
+				}					
+				if (numerosWinRate[wrt] == winRateRuby) {
+					mostra ("Ruby: <big>" + winRateRuby + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateClaude) {
+					mostra ("Claude: <big>" + winRateClaude + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateBrody) {
+					mostra ("Brody: <big>" + winRateBrody + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateValir) {
+					mostra ("Valir: <big>" + winRateValir + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateBelerick) {
+					mostra ("Belerick: <big>" + winRateBelerick + "</big>%")
+				}					
+				if (numerosWinRate[wrt] == winRateHarith) {
+					mostra ("Harith: <big>" + winRateHarith + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateXborg) {
+					mostra ("Xborg: <big>" + winRateXborg + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateSelena) {
+					mostra ("Selena: <big>" + winRateSelena + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateKagura) {
+					mostra ("Kagura: <big>" + winRateKagura + "</big>%")
+				}					
+				if (numerosWinRate[wrt] == winRatePaquito) {
+					mostra ("Paquito: <big>" + winRatePaquito + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateClint) {
+					mostra ("Clint: <big>" + winRateClint + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRatePopol) {
+					mostra ("Popol: <big>" + winRatePopol + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateBeatrix) {
+					mostra ("Beatrix: <big>" + winRateBeatrix + "%</big>")
+				}					
+				if (numerosWinRate[wrt] == winRateGranger) {
+					mostra ("Granger: <big>" + winRateGranger + "%</big>")
+				}								
+
+				}
+
+	
+	//mostra ("Ling: <big>" + winRateLing + "</big>%");
+	//mostra ("Kagura: <big>" + winRateKagura + "</big>%");
+	//mostra ("Guinevere: <big>" + winRateGuinevere + "</big>%");
+	//mostra ("Belerick: <big>" + winRateBelerick + "</big>%");
+	//mostra ("Gusion: <big>" + winRateGusion + "%</big>");
+	//mostra ("Harith: <big>" + winRateHarith + "%</big>");
+	//mostra ("Xborg: <big>" + winRateXborg + "%</big>");
+	//mostra ("Paquito: <big>" + winRatePaquito + "%</big>");
+	//mostra ("Clint: <big>" + winRateClint + "%</big>");
+	//mostra ("Popol: <big>" + winRatePopol + "%</big>");
+	//mostra ("Selena: <big>" + winRateSelena + "%</big>");
+	//mostra ("Beatrix: <big>" + winRateBeatrix + "%</big>");
+	//mostra ("Granger: <big>" + winRateGranger + "%</big>");
+	//mostra ("Claude: <big>" + winRateClaude + "%</big>");
+	//mostra ("Brody: <big>" + winRateBrody + "%</big>");
+	//mostra ("Ruby: <big>" + winRateRuby + "%</big>");
+	//mostra ("Valir: <big>" + winRateValir + "%</big>");
+	
+	
+	
+
+// mostra ("<div style='text-align:right'>")
+// mostra ("</div style='text-align:right'>")
+
+pulaLinha();
+					//mostra ("<body>")
+					//mostra ("<center><div style='text-align:top'>")
+		mostra ("<h3> Número de vitórias: <br> </h3>");
+
+		
+	mostra ("Wanwan: <big>" + Math.round (vitoriasWanwan) + "</big> Vitórias");
+	mostra ("Ling: <big>" + Math.round (vitoriasLing) + "</big> Vitórias");
+	mostra ("Kagura: <big>" + Math.round (vitoriasKagura) + "</big> Vitórias");
+	mostra ("Guinevere: <big>" + Math.round (vitoriasGuinevere) + "</big> Vitórias");
+	mostra ("Belerick: <big>" + Math.round (vitoriasBelerick) + "</big> Vitóriass");
+	mostra ("Gusion: <big>" + Math.round (vitoriasGusion) + "</big> Vitórias");
+	mostra ("Harith: <big>" + Math.round (vitoriasHarith) + "</big> Vitórias");
+	mostra ("Xborg: <big>" + Math.round (vitoriasXborg) + "</big> Vitórias");
+	mostra ("Paquito: <big>" + Math.round (vitoriasPaquito) + "</big> Vitórias");
+	mostra ("Clint: <big>" + Math.round (vitoriasClint) + "</big> Vitórias");
+	mostra ("Popol: <big>" + Math.round (vitoriasPopol) + "</big> Vitórias");
+	mostra ("Selena: <big>" + Math.round (vitoriasSelena) + "</big> Vitórias");
+	mostra ("Beatrix: <big>" + Math.round (vitoriasBeatrix) + "</big> Vitórias");
+	mostra ("Granger: <big>" + Math.round (vitoriasGranger) + "</big> Vitórias");
+	mostra ("Claude: <big>" + Math.round (vitoriasClaude) + "</big> Vitórias");
+	mostra ("Brody: <big>" + Math.round (vitoriasBrody) + "</big> Vitórias");
+	mostra ("Ruby: <big>" + Math.round (vitoriasRuby) + "</big> Vitórias");
+	mostra ("Valir: <big>" + Math.round (vitoriasValir) + "</big> Vitórias");
+
+			//mostra ("</center></div style='text-align:top'>")
+
+pulaLinha();
+
+		mostra ("<h3> Número de derrotas: </h3>");
+
+  
+	mostra ("Wanwan: <big>" + Math.round (derrotasWanwan) + "</big> Derrotas");
+	mostra ("Ling: <big>" + Math.round (derrotasLing) + "</big> Derrotas");
+	mostra ("Kagura: <big>" + Math.round (derrotasGuinevere) + "</big> Derrotas");
+	mostra ("Guinevere: <big>" + Math.round (derrotasKagura) + "</big> Derrotas");
+	mostra ("Belerick: <big>" + Math.round (derrotasBelerick) + "</big> Derrotas");
+	mostra ("Gusion: <big>" + Math.round (derrotasGusion) + "</big> Derrotas");
+	mostra ("Harith: <big>" + Math.round (derrotasHarith) + "</big> Derrotas");
+	mostra ("Xborg: <big>" + Math.round (derrotasXborg) + "</big> Derrotas");
+	mostra ("Paquito: <big>" + Math.round (derrotasPaquito) + "</big> Derrotas");
+	mostra ("Clint: <big>" + Math.round (derrotasClint) + "</big> Derrotas");
+	mostra ("Popol: <big>" + Math.round (derrotasPopol) + "</big> Derrotas");
+	mostra ("Selena: <big>" + Math.round (derrotasSelena) + "</big> Derrotas");
+	mostra ("Beatrix: <big>" + Math.round (derrotasBeatrix) + "</big> Derrotas");
+	mostra ("Granger: <big>" + Math.round (derrotasGranger) + "</big> Derrotas");
+	mostra ("Claude: <big>" + Math.round (derrotasClaude) + "</big> Derrotas");
+	mostra ("Brody: <big>" + Math.round (derrotasBrody) + "</big> Derrotas");
+	mostra ("Ruby: <big>" + Math.round (derrotasRuby) + "</big> Derrotas");
+	mostra ("Valir: <big>" + Math.round (derrotasValir) + "</big> Derrotas");
+	
+
+
+pulaLinha();
+
+		mostra ("<h3> Quantas pt's faltam para 50% </h3>")
+
+var mensagemWanwan = ("Wanwan: <big>" + Math.round (FWanWan50) + "</big> Vitórias consecutivas");
+
+  if (FWanWan50 > 0) {
+  	
+
+   mostra (mensagemWanwan)
+
+  }
+	
+	if (Fling50 > 0) {
+
+		mostra ("Ling: <big>" + Math.round (Fling50) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fling50 + partidasLing)) + "]");
+		} 
+
+	if (Fkagura50 > 0) {
+
+		mostra ("Kagura: <big>" + Math.round (Fkagura50) + "</big> Vitórias consecutivas");
+		} 
+
+
+    if (Fgusion50 > 0) {
+
+		mostra ("Gusion: <big>" + Math.round (Fgusion50) + "</big> Vitórias consecutivas");
+		} 
+
+
+    if (Fguine50 > 0) {
+
+		mostra ("Guinevere: <big>" + Math.round (Fguine50) + "</big> Vitórias consecutivas");
+		} 
+
+
+    if (Fbelerick50 > 0) {
+
+		mostra ("Belerick: <big>" + Math.round (Fbelerick50) + "</big> Vitórias consecutivas");
+		} 
+
+
+    if (Fharith50 > 0) {
+
+		mostra ("Harith: <big>" + Math.round (Fharith50) + "</big> Vitórias consecutivas");
+		} 
+
+
+    if (Fxborg50 > 0) {
+
+		mostra ("Xborg: <big>" + Math.round (Fxborg50) + "</big> Vitórias consecutivas");
+		} 
+
+
+    if (Fpaquito50 > 0) {
+
+		mostra ("Paquito: <big>" + Math.round (Fpaquito50) + "</big> Vitórias consecutivas");
+		} 
+
+
+    if (Fclint50 > 0) {
+
+		mostra ("Clint: <big>" + Math.round (Fclint50) + "</big> Vitórias consecutivas");
+		} 
+
+
+    if (Fpopol50 > 0) {
+
+		mostra ("Popol: <big>" + Math.round (Fpopol50) + "</big> Vitórias consecutivas");
+		} 
+
+		if (Fselena50 > 0) {
+
+		mostra ("Selena: <big>" + Math.round (Fselena50) + "</big> Vitórias consecutivas");
+		} 
+
+
+		if (Fbeatrix50 > 0) {
+
+		mostra ("Beatrix: <big>" + Math.round (Fbeatrix50) + "</big> Vitórias consecutivas");
+		} 
+
+
+		if (Fgranger50 > 0) {
+
+		mostra ("Granger: <big>" + Math.round (Fgranger50) + "</big> Vitórias consecutivas");
+		} 
+
+
+		if (Fclaude50 > 0) {
+
+		mostra ("Claude: <big>" + Math.round (Fclaude50) + "</big> Vitórias consecutivas");
+		} 
+
+
+		if (Fbrody50 > 0) {
+
+		mostra ("Brody: <big>" + Math.round (Fbrody50) + "</big> Vitórias consecutivas");
+		} 
+
+
+		if (Fruby50 > 0) {
+
+		mostra ("Ruby: <big>" + Math.round (Fruby50) + "</big> Vitórias consecutivas");
+		} 
+
+
+		if (Fvalir50 > 0) {
+
+		mostra ("Valir: <big>" + Math.round (Fvalir50) + "</big> Vitórias consecutivas");
+		} 
+
+
+
+
+
+		mostra ("<h3> Número de vitorias que faltam para WR = 60% </h3>");
+
+//if (F60 > 0) {
+//
+//		mostra ("xx: " + Math.round (F60) + " Vitórias consecutivas");
+//		} else {
+//			mostra ("xx: JÁ ATINGIDO!")
+//		}
+
+var WR60 = numerosWinRate60.sort(function (a,b) {
+				return a - b;
+			})
+
+
+
+var mensagemWanwan = ("Wanwan: <big>" + Math.round (FWanWan60) + "</big> Vitórias consecutivas");
+
+  if (FWanWan60 > 0) {
+
+   mostra (mensagemWanwan)
+
+  } 
+for (wrt60 = 0; wrt60 < numerosWinRate60.length; wrt60++) {
+
+
+	if (Fling60 > 0 && numerosWinRate60[wrt60] == Fling60) { 
+
+		mostra ("Ling: <big>" + Math.round (Fling60) + "</big> Vitórias consecutivas");
+		}// else if (numerosWinRate60[wrt60] < 0) {
+			//mostra ("Ling: JÁ ATINGIDO!")
+		//}
+
+	if (Fkagura60 > 0 && numerosWinRate60[wrt60] == Fkagura60) { 
+
+		mostra ("Kagura: <big>" + Math.round (Fkagura60) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fkagura60 + partidasKagura)) + "]");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Kagura: JÁ ATINGIDO");
+		}
+
+
+    if (Fgusion60 > 0 && numerosWinRate60[wrt60] == Fgusion60) {
+
+		mostra ("Gusion: <big>" + Math.round (Fgusion60) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate60 <= 0) {
+
+			mostra ("Gusion: JÁ ATINGIDO!")
+		}
+
+
+
+    if (Fguine60 > 0 && numerosWinRate60[wrt60] == Fguine60) {
+
+			mostra ("Guinevere: <big>" + Math.round (Fguine60) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fguine60 + partidasGuinevere)) + "]");
+
+		} if (numerosWinRate60 <= 0) {
+
+			mostra ("Guinevere: JÁ ATINGIDO!")
+		  }
+
+
+
+    if (Fbelerick60 > 0 && numerosWinRate60[wrt60] == Fbelerick60) {
+
+			mostra ("Belerick: <big>" + Math.round (Fbelerick60) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fbelerick60 + partidasBelerick)) + "]");
+
+		} if (numerosWinRate60 <= 0) {
+
+			mostra ("Belerick: JÁ ATINGIDO!")
+		  }
+
+
+
+    if (Fharith60 > 0 && numerosWinRate60[wrt60] == Fharith60) { 
+
+		mostra ("Harith: <big>" + Math.round (Fharith60) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fharith60 + partidasHarith)) + "]");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Harith: JÁ ATINGIDO!")
+		}
+
+
+    if (Fxborg60 > 0 && numerosWinRate60[wrt60] == Fxborg60) { 
+
+		mostra ("Xborg: <big>" + Math.round (Fxborg60) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Xborg: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpaquito60 > 0 && numerosWinRate60[wrt60] == Fpaquito60) { 
+
+		mostra ("Paquito: <big>" + Math.round (Fpaquito60) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Paquito: JÁ ATINGIDO!")
+		}
+
+
+    if (Fclint60 > 0 && numerosWinRate60[wrt60] == Fclint60) { 
+
+		mostra ("Clint: <big>" + Math.round (Fclint60) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Clint: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpopol60 > 0 && numerosWinRate60[wrt60] == Fpopol60) { 
+
+		mostra ("Popol: <big>" + Math.round (Fpopol60) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Popol: JÁ ATINGIDO!")
+		}
+
+
+		if (Fselena60 > 0 && numerosWinRate60[wrt60] == Fselena60) { 
+
+		mostra ("Selena: <big>" + Math.round (Fselena60) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fselena60 + partidasSelena)) + "]");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Selena: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbeatrix60 > 0 && numerosWinRate60[wrt60] == Fbeatrix60) { 
+
+		mostra ("Beatrix: <big>" + Math.round (Fbeatrix60) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Beatrix: JÁ ATINGIDO!")
+		}
+
+
+		if (Fgranger60 > 0 && numerosWinRate60[wrt60] == Fgranger60) { 
+
+		mostra ("Granger: <big>" + Math.round (Fgranger60) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Granger: JÁ ATINGIDO!")
+		}
+
+
+		if (Fclaude60 > 0 && numerosWinRate60[wrt60] == Fclaude60) { 
+
+		mostra ("Claude: <big>" + Math.round (Fclaude60) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Claude: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbrody60 > 0 && numerosWinRate60[wrt60] == Fbrody60) { 
+
+		mostra ("Brody: <big>" + Math.round (Fbrody60) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fbrody60 + partidasBrody)) + "]");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Brody: JÁ ATINGIDO!")
+		}
+
+
+		if (Fruby60 > 0 && numerosWinRate60[wrt60] == Fruby60) { 
+
+		mostra ("Ruby: <big>" + Math.round (Fruby60) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fruby60 + partidasRuby)) + "]");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Ruby: JÁ ATINGIDO!")
+		}
+
+
+		if (Fvalir60 > 0 && numerosWinRate60[wrt60] == Fvalir60) { 
+
+		mostra ("Valir: <big>" + Math.round (Fvalir60) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate60 <= 0) {
+			mostra ("Valir: JÁ ATINGIDO!")
+		}
+
+}
+
+
+// Codigo antigo do de cima:
+
+	//mostra ("Kagura: " + Math.round (Fkagura60) + " Vitórias consecutivas");
+	//mostra ("Guinevere: " + Math.round (Fguine60) + " Vitórias consecutivas");
+	//mostra ("Belerick: " + Math.round (Fbelerick60) + " Vitórias consecutivas");
+	//mostra ("Gusion: " + Math.round (Fgusion60) + " Vitórias consecutivas");
+	//mostra ("Harith: " + Math.round (Fharith60) + " Vitórias consecutivas");
+	//mostra ("Xborg: " + Math.round (Fxborg60) + " Vitórias consecutivas");
+	//mostra ("Paquito: " + Math.round (Fpaquito60) + " Vitórias consecutivas");
+	//mostra ("Clint: " + Math.round (Fclint60) + " Vitórias consecutivas");
+	//mostra ("Popol: " + Math.round (Fpopol60) + " Vitórias consecutivas");
+	//mostra ("Selena: " + Math.round (Fselena60) + " Vitórias consecutivas");
+	//mostra ("Beatrix: " + Math.round (Fbeatrix60) + " Vitórias consecutivas");
+	//mostra ("Granger: " + Math.round (Fgranger60) + " Vitórias consecutivas");
+	//mostra ("Claude: " + Math.round (Fclaude60) + " Vitórias consecutivas");
+	//mostra ("Brody: " + Math.round (Fbrody60) + " Vitórias consecutivas");
+	//mostra ("Ruby: " + Math.round (Fruby60) + " Vitórias consecutivas");
+	//mostra ("Valir: " + Math.round (Fvalir60) + " Vitórias consecutivas");
+	
+
+pulaLinha();
+
+		mostra ("<h3> Número de vitorias que faltam para WR = 70% </h3>");
+
+var WR70 = numerosWinRate70.sort(function (a,b) {
+				return a - b;
+			})
+
+for (wrt70 = 0; wrt70 < numerosWinRate70.length; wrt70++) {
+
+
+		// = ("Wanwan: <big>" + Math.round (FWanWan70) + "</big> Vitórias consecutivas");
+
+  if (FWanWan70 > 0 && numerosWinRate70[wrt70] == FWanWan70)  {
+
+   mostra ("Wanwan: <big>" + Math.round (FWanWan70) + "</big> Vitórias consecutivas")
+
+  }
+	
+	if (Fling70 > 0 && numerosWinRate70[wrt70] == Fling70) { 
+
+		mostra ("Ling: <big>" + Math.round (Fling70) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fling70 + partidasLing)) + "]");
+		}// else if (numerosWinRate60[wrt60] < 0) {
+			//mostra ("Ling: JÁ ATINGIDO!")
+		//}
+
+	if (Fkagura70 > 0 && numerosWinRate70[wrt70] == Fkagura70) { 
+
+		mostra ("Kagura: <big>" + Math.round (Fkagura70) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fkagura70 + partidasKagura)) + "]");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Kagura: JÁ ATINGIDO");
+		}
+
+
+    if (Fgusion70 > 0 && numerosWinRate70[wrt70] == Fgusion70) {
+
+		mostra ("Gusion: <big>" + Math.round (Fgusion70) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate70 <= 0) {
+
+			mostra ("Gusion: JÁ ATINGIDO!")
+		}
+
+
+
+    if (Fguine70 > 0 && numerosWinRate70[wrt70] == Fguine70) {
+
+			mostra ("Guinevere: <big>" + Math.round (Fguine70) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fguine70 + partidasGuinevere)) + "]");
+
+		} if (numerosWinRate70 <= 0) {
+
+			mostra ("Guinevere: JÁ ATINGIDO!")
+		  }
+
+
+
+    if (Fbelerick70 > 0 && numerosWinRate70[wrt70] == Fbelerick70) {
+
+			mostra ("Belerick: <big>" + Math.round (Fbelerick70) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fbelerick70 + partidasBelerick)) + "]");
+
+		} if (numerosWinRate70 <= 0) {
+
+			mostra ("Belerick: JÁ ATINGIDO!")
+		  }
+
+
+
+    if (Fharith70 > 0 && numerosWinRate70[wrt70] == Fharith70) { 
+
+		mostra ("Harith: <big>" + Math.round (Fharith70) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fharith70 + partidasHarith)) + "]");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Harith: JÁ ATINGIDO!")
+		}
+
+
+    if (Fxborg70 > 0 && numerosWinRate70[wrt70] == Fxborg70) { 
+
+		mostra ("Xborg: <big>" + Math.round (Fxborg70) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Xborg: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpaquito70 > 0 && numerosWinRate60[wrt70] == Fpaquito70) { 
+
+		mostra ("Paquito: <big>" + Math.round (Fpaquito70) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Paquito: JÁ ATINGIDO!")
+		}
+
+
+    if (Fclint70 > 0 && numerosWinRate70[wrt70] == Fclint70) { 
+
+		mostra ("Clint: <big>" + Math.round (Fclint70) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Clint: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpopol70 > 0 && numerosWinRate70[wrt70] == Fpopol70) { 
+
+		mostra ("Popol: <big>" + Math.round (Fpopol70) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Popol: JÁ ATINGIDO!")
+		}
+
+
+		if (Fselena70 > 0 && numerosWinRate70[wrt70] == Fselena70) { 
+
+		mostra ("Selena: <big>" + Math.round (Fselena70) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fselena70 + partidasSelena)) + "]");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Selena: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbeatrix70 > 0 && numerosWinRate70[wrt70] == Fbeatrix70) { 
+
+		mostra ("Beatrix: <big>" + Math.round (Fbeatrix70) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Beatrix: JÁ ATINGIDO!")
+		}
+
+
+		if (Fgranger70 > 0 && numerosWinRate70[wrt70] == Fgranger70) { 
+
+		mostra ("Granger: <big>" + Math.round (Fgranger70) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Granger: JÁ ATINGIDO!")
+		}
+
+
+		if (Fclaude70 > 0 && numerosWinRate70[wrt70] == Fclaude70) { 
+
+		mostra ("Claude: <big>" + Math.round (Fclaude70) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Claude: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbrody70 > 0 && numerosWinRate70[wrt70] == Fbrody70) { 
+
+		mostra ("Brody: <big>" + Math.round (Fbrody70) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fbrody70 + partidasBrody)) + "]");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Brody: JÁ ATINGIDO!")
+		}
+
+
+		if (Fruby70 > 0 && numerosWinRate70[wrt70] == Fruby70) { 
+
+		mostra ("Ruby: <big>" + Math.round (Fruby70) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fruby70 + partidasRuby)) + "]");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Ruby: JÁ ATINGIDO!")
+		}
+
+
+		if (Fvalir70 > 0 && numerosWinRate70[wrt70] == Fvalir70) { 
+
+		mostra ("Valir: <big>" + Math.round (Fvalir70) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate70 <= 0) {
+			mostra ("Valir: JÁ ATINGIDO!")
+		}
+
+}
+
+
+	//mostra ("Wanwan: " + Math.round (FWanWan70) + " Vitórias consecutivas");
+	//mostra ("Ling: " + Math.round (Fling70) + " Vitórias consecutivas");
+	//mostra ("Kagura: " + Math.round (Fkagura70) + " Vitórias consecutivas");
+	//mostra ("Guinevere: " + Math.round (Fguine70) + " Vitórias consecutivas");
+	//mostra ("Belerick: " + Math.round (Fbelerick70) + " Vitórias consecutivas");
+	//mostra ("Gusion: " + Math.round (Fgusion70) + " Vitórias consecutivas");
+	//mostra ("Harith: " + Math.round (Fharith70) + " Vitórias consecutivas");
+	//mostra ("Xborg: " + Math.round (Fxborg70) + " Vitórias consecutivas");
+	//mostra ("Paquito: " + Math.round (Fpaquito70) + " Vitórias consecutivas");
+	//mostra ("Clint: " + Math.round (Fclint70) + " Vitórias consecutivas");
+	//mostra ("Popol: " + Math.round (Fpopol70) + " Vitórias consecutivas");
+	//mostra ("Selena: " + Math.round (Fselena70) + " Vitórias consecutivas");
+	//mostra ("Beatrix: " + Math.round (Fbeatrix70) + " Vitórias consecutivas");
+	//mostra ("Granger: " + Math.round (Fgranger70) + " Vitórias consecutivas");
+	//mostra ("Claude: " + Math.round (Fclaude70) + " Vitórias consecutivas");
+	//mostra ("Brody: " + Math.round (Fbrody70) + " Vitórias consecutivas");
+	//mostra ("Ruby: " + Math.round (Fruby70) + " Vitórias consecutivas");
+	//mostra ("Valir: " + Math.round (Fvalir70) + " Vitórias consecutivas");
+
+
+pulaLinha();
+
+
+		mostra ("<h3> Número de vitorias que faltam para WR = 80% </h3>");
+
+
+  var WR80 = numerosWinRate80.sort(function (a,b) {
+				return a - b;
+			})
+
+for (wrt80 = 0; wrt80 < numerosWinRate80.length; wrt80++) {
+
+
+		// = ("Wanwan: <big>" + Math.round (FWanWan70) + "</big> Vitórias consecutivas");
+
+  if (FWanWan80 > 0 && numerosWinRate80[wrt80] == FWanWan80)  {
+
+   mostra ("Wanwan: <big>" + Math.round (FWanWan80) + "</big> Vitórias consecutivas")
+
+  }
+	
+	if (Fling80 > 0 && numerosWinRate80[wrt80] == Fling80) { 
+
+		mostra ("Ling: <big>" + Math.round (Fling80) + "</big> Vitórias consecutivas");
+		}// else if (numerosWinRate60[wrt60] < 0) {
+			//mostra ("Ling: JÁ ATINGIDO!")
+		//}
+
+	if (Fkagura80 > 0 && numerosWinRate80[wrt80] == Fkagura80) { 
+
+		mostra ("Kagura: <big>" + Math.round (Fkagura80) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fkagura80 + partidasKagura)) + "]");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Kagura: JÁ ATINGIDO");
+		}
+
+
+    if (Fgusion80 > 0 && numerosWinRate80[wrt80] == Fgusion80) {
+
+		mostra ("Gusion: <big>" + Math.round (Fgusion80) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate80 <= 0) {
+
+			mostra ("Gusion: JÁ ATINGIDO!")
+		}
+
+
+
+    if (Fguine80 > 0 && numerosWinRate80[wrt80] == Fguine80) {
+
+			mostra ("Guinevere: <big>" + Math.round (Fguine80) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fguine80 + partidasGuinevere)) + "]");
+
+		} if (numerosWinRate80 <= 0) {
+
+			mostra ("Guinevere: JÁ ATINGIDO!")
+		  }
+
+
+
+    if (Fbelerick80 > 0 && numerosWinRate80[wrt80] == Fbelerick80) {
+
+			mostra ("Belerick: <big>" + Math.round (Fbelerick80) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fbelerick80 + partidasBelerick)) + "]");
+
+		} if (numerosWinRate80 <= 0) {
+
+			mostra ("Belerick: JÁ ATINGIDO!")
+		  }
+
+
+
+    if (Fharith80 > 0 && numerosWinRate80[wrt80] == Fharith80) { 
+
+		mostra ("Harith: <big>" + Math.round (Fharith80) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fharith80 + partidasHarith)) + "]");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Harith: JÁ ATINGIDO!")
+		}
+
+
+    if (Fxborg80 > 0 && numerosWinRate80[wrt80] == Fxborg80) { 
+
+		mostra ("Xborg: <big>" + Math.round (Fxborg80) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Xborg: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpaquito80 > 0 && numerosWinRate60[wrt80] == Fpaquito80) { 
+
+		mostra ("Paquito: <big>" + Math.round (Fpaquito80) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Paquito: JÁ ATINGIDO!")
+		}
+
+
+    if (Fclint80 > 0 && numerosWinRate80[wrt80] == Fclint80) { 
+
+		mostra ("Clint: <big>" + Math.round (Fclint80) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Clint: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpopol80 > 0 && numerosWinRate80[wrt80] == Fpopol80) { 
+
+		mostra ("Popol: <big>" + Math.round (Fpopol80) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Popol: JÁ ATINGIDO!")
+		}
+
+
+		if (Fselena80 > 0 && numerosWinRate80[wrt80] == Fselena80) { 
+
+		mostra ("Selena: <big>" + Math.round (Fselena80) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fselena80 + partidasSelena)) + "]");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Selena: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbeatrix80 > 0 && numerosWinRate80[wrt80] == Fbeatrix80) { 
+
+		mostra ("Beatrix: <big>" + Math.round (Fbeatrix80) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Beatrix: JÁ ATINGIDO!")
+		}
+
+
+		if (Fgranger80 > 0 && numerosWinRate60[wrt80] == Fgranger80) { 
+
+		mostra ("Granger: <big>" + Math.round (Fgranger80) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Granger: JÁ ATINGIDO!")
+		}
+
+
+		if (Fclaude80 > 0 && numerosWinRate80[wrt80] == Fclaude80) { 
+
+		mostra ("Claude: <big>" + Math.round (Fclaude80) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Claude: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbrody80 > 0 && numerosWinRate80[wrt80] == Fbrody80) { 
+		mostra ("Brody: <big>" + Math.round (Fbrody80) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fbrody70 + partidasBrody)) + "]");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Brody: JÁ ATINGIDO!")
+		}
+
+
+		if (Fruby80 > 0 && numerosWinRate80[wrt80] == Fruby80) { 
+
+		mostra ("Ruby: <big>" + Math.round (Fruby80) + "</big> Vitórias consecutivas [na Partida " + (Math.round (Fruby80 + partidasRuby)) + "]");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Ruby: JÁ ATINGIDO!")
+		  }
+
+
+		if (Fvalir80 > 0 && numerosWinRate80[wrt80] == Fvalir80) { 
+
+		mostra ("Valir: <big>" + Math.round (Fvalir80) + "</big> Vitórias consecutivas");
+		} if (numerosWinRate80 <= 0) {
+			mostra ("Valir: JÁ ATINGIDO!")
+		  }
+	}
+
+	//mostra ("Wanwan: " + Math.round (FWanWan80) + " Vitórias consecutivas");
+	//mostra ("Ling: " + Math.round (Fling80) + " Vitórias consecutivas");
+	//mostra ("Kagura: " + Math.round (Fkagura80) + " Vitórias consecutivas");
+	//mostra ("Guinevere: " + Math.round (Fguine80) + " Vitórias consecutivas");
+	//mostra ("Belerick: " + Math.round (Fbelerick80) + " Vitórias consecutivas");
+	//mostra ("Gusion: " + Math.round (Fgusion80) + " Vitórias consecutivas");
+	//mostra ("Harith: " + Math.round (Fharith80) + " Vitórias consecutivas");
+	//mostra ("Xborg: " + Math.round (Fxborg80) + " Vitórias consecutivas");
+	//mostra ("Paquito: " + Math.round (Fpaquito80) + " Vitórias consecutivas");
+	//mostra ("Clint: " + Math.round (Fclint80) + " Vitórias consecutivas");
+	//mostra ("Popol: " + Math.round (Fpopol80) + " Vitórias consecutivas");
+	//mostra ("Selena: " + Math.round (Fselena80) + " Vitórias consecutivas");
+	//mostra ("Beatrix: " + Math.round (Fbeatrix80) + " Vitórias consecutivas");
+	//mostra ("Granger: " + Math.round (Fgranger80) + " Vitórias consecutivas");
+	//mostra ("Claude: " + Math.round (Fclaude80) + " Vitórias consecutivas");
+	//mostra ("Brody: " + Math.round (Fbrody80) + " Vitórias consecutivas");
+	//mostra ("Ruby: " + Math.round (Fruby80) + " Vitórias consecutivas");
+	//mostra ("Valir: " + Math.round (Fvalir80) + " Vitórias consecutivas");
+
+
+
+pulaLinha();
+
+		mostra ("<h3> Número de vitorias que faltam para WR = 90% </h3>");
+
+var mensagemWanwan = ("Wanwan: <big>" + Math.round (FWanWan90) + "</big> Vitórias consecutivas");
+
+  if (FWanWan90 > 0) {
+
+   mostra (mensagemWanwan)
+
+  } else {
+		mostra ("JÁ ATINGIDO")
+  }
+	
+	if (Fling90 > 0) {
+
+		mostra ("Ling: <big>" + Math.round (Fling90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Ling: JÁ ATINGIDO!")
+		}
+
+	if (Fkagura90 > 0) {
+
+		mostra ("Kagura: <big>" + Math.round (Fkagura90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Kagura: JÁ ATINGIDO!")
+		}
+
+
+    if (Fgusion90 > 0) {
+
+		mostra ("Gusion:<big> " + Math.round (Fgusion90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Gusion: JÁ ATINGIDO!")
+		}
+
+
+    if (Fguine90 > 0) {
+
+		mostra ("Guinevere:<big> " + Math.round (Fguine90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Guinevere: JÁ ATINGIDO!")
+		}
+
+
+    if (Fbelerick90 > 0) {
+
+		mostra ("Belerick: <big>" + Math.round (Fbelerick90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Belerick: JÁ ATINGIDO!")
+		}
+
+
+    if (Fharith90 > 0) {
+
+		mostra ("Harith: <big>" + Math.round (Fharith90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Harith: JÁ ATINGIDO!")
+		}
+
+
+    if (Fxborg90 > 0) {
+
+		mostra ("Xborg: <big>" + Math.round (Fxborg90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Xborg: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpaquito90 > 0) {
+
+		mostra ("Paquito: <big>" + Math.round (Fpaquito90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Paquito: JÁ ATINGIDO!")
+		}
+
+
+    if (Fclint90 > 0) {
+
+		mostra ("Clint: <big>" + Math.round (Fclint90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Clint: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpopol90 > 0) {
+
+		mostra ("Popol:<big> " + Math.round (Fpopol90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Popol: JÁ ATINGIDO!")
+		}
+
+
+		if (Fselena90 > 0) {
+
+		mostra ("Selena: <big>" + Math.round (Fselena90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Selena: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbeatrix90 > 0) {
+
+		mostra ("Beatrix: <big>" + Math.round (Fbeatrix90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Beatrix: JÁ ATINGIDO!")
+		}
+
+
+		if (Fgranger90 > 0) {
+
+		mostra ("Granger: <big>" + Math.round (Fgranger90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Granger: JÁ ATINGIDO!")
+		}
+
+
+		if (Fclaude90 > 0) {
+
+		mostra ("Claude: <big>" + Math.round (Fclaude90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Claude: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbrody90 > 0) {
+
+		mostra ("Brody: <big>" + Math.round (Fbrody90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Brody: JÁ ATINGIDO!")
+		}
+
+
+		if (Fruby90 > 0) {
+
+		mostra ("Ruby: <big>" + Math.round (Fruby90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Ruby: JÁ ATINGIDO!")
+		}
+
+
+		if (Fvalir90 > 0) {
+
+		mostra ("Valir: <big>" + Math.round (Fvalir90) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Valir: JÁ ATINGIDO!")
+		}
+
+	//mostra ("Wanwan: " + Math.round (FWanWan90) + " Vitórias consecutivas");
+	//mostra ("Ling: " + Math.round (Fling90) + " Vitórias consecutivas");
+	//mostra ("Kagura: " + Math.round (Fkagura90) + " Vitórias consecutivas");
+	//mostra ("Guinevere: " + Math.round (Fguine90) + " Vitórias consecutivas");
+	//mostra ("Belerick: " + Math.round (Fbelerick90) + " Vitórias consecutivas");
+	//mostra ("Gusion: " + Math.round (Fgusion90) + " Vitórias consecutivas");
+	//mostra ("Harith: " + Math.round (Fharith90) + " Vitórias consecutivas");
+	//mostra ("Xborg: " + Math.round (Fxborg90) + " Vitórias consecutivas");
+	//mostra ("Paquito: " + Math.round (Fpaquito90) + " Vitórias consecutivas");
+	//mostra ("Clint: " + Math.round (Fclint90) + " Vitórias consecutivas");
+	//mostra ("Popol: " + Math.round (Fpopol90) + " Vitórias consecutivas");
+	//mostra ("Selena: " + Math.round (Fselena90) + " Vitórias consecutivas");
+	//mostra ("Beatrix: " + Math.round (Fbeatrix90) + " Vitórias consecutivas");
+	//mostra ("Granger: " + Math.round (Fgranger90) + " Vitórias consecutivas");
+	//mostra ("Claude: " + Math.round (Fclaude90) + " Vitórias consecutivas");
+	//mostra ("Brody: " + Math.round (Fbrody90) + " Vitórias consecutivas");
+	//mostra ("Ruby: " + Math.round (Fruby90) + " Vitórias consecutivas");
+	//mostra ("Valir: " + Math.round (Fvalir90) + " Vitórias consecutivas");
+
+
+
+pulaLinha();
+
+		mostra ("<h3> Número de vitorias que faltam para WR = 100% </h3>");
+
+var mensagemWanwan = ("Wanwan: <big>" + Math.round (FWanWan100) + "</big> Vitórias consecutivas");
+
+  if (FWanWan100 > 0) {
+
+   mostra (mensagemWanwan)
+
+  } else {
+		mostra ("WR 100% ja atingido")
+}
+	
+	if (Fling100 > 0) {
+
+		mostra ("Ling:<big> " + Math.round (Fling100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Ling: JÁ ATINGIDO!")
+		}
+
+	if (Fkagura100 > 0) {
+
+		mostra ("Kagura: <big>" + Math.round (Fkagura100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Kagura: JÁ ATINGIDO!")
+		}
+
+
+    if (Fgusion100 > 0) {
+
+		mostra ("Gusion:<big>" + Math.round (Fgusion100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Gusion: JÁ ATINGIDO!")
+		}
+
+
+    if (Fguine100 > 0) {
+
+		mostra ("Guinevere: <big>" + Math.round (Fguine100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Guinevere: JÁ ATINGIDO!")
+		}
+
+
+    if (Fbelerick100 > 0) {
+
+		mostra ("Belerick: <big>" + Math.round (Fbelerick100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Belerick: JÁ ATINGIDO!")
+		}
+
+
+    if (Fharith100 > 0) {
+
+		mostra ("Harith: <big>" + Math.round (Fharith100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Harith: JÁ ATINGIDO!")
+		}
+
+
+    if (Fxborg100 > 0) {
+
+		mostra ("Xborg: <big>" + Math.round (Fxborg100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Xborg: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpaquito100 > 0) {
+
+		mostra ("Paquito: <big>" + Math.round (Fpaquito100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Paquito: JÁ ATINGIDO!")
+		}
+
+
+    if (Fclint100 > 0) {
+
+		mostra ("Clint: <big>" + Math.round (Fclint100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Clint: JÁ ATINGIDO!")
+		}
+
+
+    if (Fpopol100 > 0) {
+
+		mostra ("Popol: <big>" + Math.round (Fpopol100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Popol: JÁ ATINGIDO!")
+		}
+
+
+		if (Fselena100 > 0) {
+
+		mostra ("Selena: <big>" + Math.round (Fselena100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Selena: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbeatrix100 > 0) {
+
+		mostra ("Beatrix: <big>" + Math.round (Fbeatrix100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Beatrix: JÁ ATINGIDO!")
+		}
+
+
+		if (Fgranger100 > 0) {
+
+		mostra ("Granger: <big>" + Math.round (Fgranger100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Granger: JÁ ATINGIDO!")
+		}
+
+
+		if (Fclaude100 > 0) {
+
+		mostra ("Claude: <big>" + Math.round (Fclaude100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Claude: JÁ ATINGIDO!")
+		}
+
+
+		if (Fbrody100 > 0) {
+
+		mostra ("Brody: <big>" + Math.round (Fbrody100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Brody: JÁ ATINGIDO!")
+		}
+
+
+		if (Fruby100 > 0) {
+
+		mostra ("Ruby: <big>" + Math.round (Fruby100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Ruby: JÁ ATINGIDO!")
+		}
+
+
+		if (Fvalir100 > 0) {
+
+		mostra ("Valir: <big>" + Math.round (Fvalir100) + "</big> Vitórias consecutivas");
+		} else {
+			mostra ("Valir: JÁ ATINGIDO!")
+		}
+
+
+	//mostra ("Wanwan: " + Math.round (FWanWan100) + " Vitórias consecutivas");
+	//mostra ("Ling: " + Math.round (Fling100) + " Vitórias consecutivas");
+	//mostra ("Kagura: " + Math.round (Fkagura100) + " Vitórias consecutivas");
+	//mostra ("Guinevere: " + Math.round (Fguine100) + " Vitórias consecutivas");
+	//mostra ("Belerick: " + Math.round (Fbelerick100) + " Vitórias consecutivas");
+	//mostra ("Gusion: " + Math.round (Fgusion100) + " Vitórias consecutivas");
+	//mostra ("Harith: " + Math.round (Fharith100) + " Vitórias consecutivas");
+	//mostra ("Xborg: " + Math.round (Fxborg100) + " Vitórias consecutivas");
+	//mostra ("Paquito: " + Math.round (Fpaquito100) + " Vitórias consecutivas");
+	//mostra ("Clint: " + Math.round (Fclint100) + " Vitórias consecutivas");
+	//mostra ("Popol: " + Math.round (Fpopol100) + " Vitórias consecutivas");
+	//mostra ("Selena: " + Math.round (Fselena100) + " Vitórias consecutivas");
+	//mostra ("Beatrix: " + Math.round (Fbeatrix100) + " Vitórias consecutivas");
+	//mostra ("Granger: " + Math.round (Fgranger100) + " Vitórias consecutivas");
+	//mostra ("Claude: " + Math.round (Fclaude100) + " Vitórias consecutivas");
+	//mostra ("Brody: " + Math.round (Fbrody100) + " Vitórias consecutivas");
+	//mostra ("Ruby: " + Math.round (Fruby100) + " Vitórias consecutivas");
+	//mostra ("Valir: " + Math.round (Fvalir100) + " Vitórias consecutivas"); 
+
+	</script>
+</html>
